@@ -47,9 +47,5 @@ jobs:
         git config --global user.email 'github-actions@github.com'
         git add stock_analysis_results.csv
         git commit -m "Update stock analysis results"
-        git push
-      env:
-        # Use the GitHub token automatically provided to workflows for authentication
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/gdnigit/EMAX.git HEAD:main
 
-        
