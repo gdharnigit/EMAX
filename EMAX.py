@@ -164,3 +164,9 @@ if __name__ == "__main__":
 
     print("\nFiltered stocks with recent EMA crossovers:")
     print(filtered)
+
+if not filtered.empty:
+    filtered.to_csv("stock_analysis_results.csv", index=False)
+    print("\nResults saved to stock_analysis_results.csv")
+else:
+    print("\nNo results to save.")
