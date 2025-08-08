@@ -147,11 +147,9 @@ def add_summary_rows(df):
     bullish_tickers = df[df['Crossover Type'] == 'Bullish']['Symbol'].tolist()
     bearish_tickers = df[df['Crossover Type'] == 'Bearish']['Symbol'].tolist()
 
-    # Convert lists to comma-separated strings
     bullish_str = ",".join(bullish_tickers)
     bearish_str = ",".join(bearish_tickers)
 
-    # Create two new rows as dictionaries
     bullish_row = {
         'Symbol': 'Bullish_Tickers',
         'Crossover Date': '',
@@ -167,8 +165,12 @@ def add_summary_rows(df):
         'Percentage Distance (%)': bearish_str
     }
 
-    # Append rows to dataframe
-    return df.append([bullish_row, bearish_row], ignore_index=True)
+    # Create DataFrame for new rows
+    summary_df = pd.DataFrame([bullish_row, bearish_row])
+
+    # Use pd.concat to combine
+    return pd.concat([df, summary_df], ignore_index=True)
+
 
 
 # Inside filter_stocks_twelvedata at the end:
