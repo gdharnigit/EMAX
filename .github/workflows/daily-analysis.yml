@@ -22,6 +22,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Show current directory
+      run: pwd
+
+    - name: List all files
+      run: ls -R
     
     - name: Run stock analysis
       env:
