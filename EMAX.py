@@ -144,19 +144,32 @@ def filter_stocks_twelvedata(stock_symbols, ema_a, ema_b, x_days, api_key):
 
 # Add this function somewhere after filter_stocks_twelvedata definition
 def add_summary_rows(df):
-    bullish = df[df["Crossover Type"] == "Bullish"]["Symbol"].tolist()
-    bearish = df[df["Crossover Type"] == "Bearish"]["Symbol"].tolist()
+    bullish_tickers = df[df['Crossover Type'] == 'Bullish']['Symbol'].tolist()
+    bearish_tickers = df[df['Crossover Type'] == 'Bearish']['Symbol'].tolist()
 
-    summary_df = pd.DataFrame({
-        "Symbol": ["Bullish Tickers", "Bearish Tickers"],
-        "Crossover Date": [None, None],
-        "Crossover Type": [None, None],
-        "Current Price": [None, None],
-        "Percentage Distance (%)": [None, None],
-        "Summary": [",".join(bullish), ",".join(bearish)],
-    })
+    # Convert lists to comma-separated strings
+    bullish_str = ",".join(bullish_tickers)
+    bearish_str = ",".join(bearish_tickers)
 
-    return pd.concat([df, summary_df], ignore_index=True)
+    # Create two new rows as dictionaries
+    bullish_row = {
+        'Symbol': 'Bullish_Tickers',
+        'Crossover Date': '',
+        'Crossover Type': '',
+        'Current Price': '',
+        'Percentage Distance (%)': bullish_str
+    }
+    bearish_row = {
+        'Symbol': 'Bearish_Tickers',
+        'Crossover Date': '',
+        'Crossover Type': '',
+        'Current Price': '',
+        'Percentage Distance (%)': bearish_str
+    }
+
+    # Append rows to dataframe
+    return df.append([bullish_row, bearish_row], ignore_index=True)
+
 
 # Inside filter_stocks_twelvedata at the end:
     df_results = add_summary_rows(df_results)
@@ -182,11 +195,14 @@ if __name__ == "__main__":
         api_key=API_KEY_TWELVE,
     )
 
-    print("\nFiltered stocks with recent EMA crossovers:")
-    print(filtered)
+    # Add the summary rows with tickers in CSV format
+    filtered_with_summary = add_summary_rows(filtered)
+    
+    print("\nFiltered stocks with recent EMA crossovers (including summary):")
+    print(filtered_with_summary)
 
-if not filtered.empty:
-    filtered.to_csv("stock_analysis_results.csv", index=False)
-    print("\nResults saved to stock_analysis_results.csv")
+if not filtered_with_summary.empty:
+    # When saving to CSV, save the updated df
+    filtered_with_summary.to_csv("stock_analysis_results.csv", index=False)
 else:
     print("\nNo results to save.")
