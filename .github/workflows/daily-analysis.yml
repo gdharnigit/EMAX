@@ -30,7 +30,7 @@ jobs:
     
     - name: Run stock analysis
       env:
-        ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+        API_KEY_TWELVEDATA: ${{ secrets.TWELVEDATA_API_KEY }}
       run: python EMAX.py
     
     - name: Upload results
