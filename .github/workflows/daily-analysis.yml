@@ -39,4 +39,17 @@ jobs:
       with:
         name: stock-analysis-results
         path: "*.csv"
-        retention-days: 30
+        retention-days: 10
+
+    - name: Commit and push results
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git add stock_analysis_results.csv
+        git commit -m "Update stock analysis results"
+        git push
+      env:
+        # Use the GitHub token automatically provided to workflows for authentication
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        
