@@ -8,6 +8,9 @@ on:
 jobs:
   analyze-stocks:
     runs-on: ubuntu-latest
+
+    env:
+      TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}    
     
     steps:
     - name: Checkout code
@@ -27,10 +30,8 @@ jobs:
 
     - name: List all files
       run: ls -R
-    
+      
     - name: Run stock analysis
-      env:
-        API_KEY_TWELVEDATA: ${{ secrets.TWELVEDATA_API_KEY }}
       run: python EMAX.py
     
     - name: Upload results
