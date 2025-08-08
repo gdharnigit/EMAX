@@ -1,4 +1,9 @@
 Symbol,Crossover Date,Crossover Type,Current Price,Percentage Distance (%)
-AAPL,2025-07-11,Bullish,229.365,11.151567804189225
-Bullish_Tickers,,,,AAPL
-Bearish_Tickers,,,,
+RS,2025-08-05,Bearish,285.135,-7.359495279336141
+CSL,2025-08-07,Bearish,366.73,-5.076539158045711
+GGG,2025-08-05,Bearish,83.49,-1.9032248900923026
+SAIA,2025-07-25,Bullish,283.62,-3.7174231711563035
+GHC,2025-08-08,Bullish,973.48,3.893559824311626
+GO,2025-08-06,Bullish,18.54,33.65752422822485
+Bullish_Tickers,,,,"SAIA,GHC,GO"
+Bearish_Tickers,,,,"RS,CSL,GGG"
