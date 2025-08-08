@@ -142,6 +142,26 @@ def filter_stocks_twelvedata(stock_symbols, ema_a, ema_b, x_days, api_key):
     df_results = pd.DataFrame(results)
     return df_results
 
+# Add this function somewhere after filter_stocks_twelvedata definition
+def add_summary_rows(df):
+    bullish = df[df["Crossover Type"] == "Bullish"]["Symbol"].tolist()
+    bearish = df[df["Crossover Type"] == "Bearish"]["Symbol"].tolist()
+
+    summary_df = pd.DataFrame({
+        "Symbol": ["Bullish Tickers", "Bearish Tickers"],
+        "Crossover Date": [None, None],
+        "Crossover Type": [None, None],
+        "Current Price": [None, None],
+        "Percentage Distance (%)": [None, None],
+        "Summary": [",".join(bullish), ",".join(bearish)],
+    })
+
+    return pd.concat([df, summary_df], ignore_index=True)
+
+# Inside filter_stocks_twelvedata at the end:
+    df_results = add_summary_rows(df_results)
+    return df_results
+
 
 if __name__ == "__main__":
     # Read API key from environment variable
