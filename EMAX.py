@@ -158,7 +158,7 @@ if __name__ == "__main__":
         stock_symbols=symbols,
         ema_a=21,
         ema_b=55,
-        x_days=10,
+        x_days=30,
         api_key=API_KEY_TWELVE,
     )
 
