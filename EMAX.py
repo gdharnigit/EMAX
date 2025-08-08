@@ -100,11 +100,9 @@ def filter_stocks_twelvedata(stock_symbols, ema_a, ema_b, x_days, api_key):
 
             stock = get_twelvedata_data(symbol, api_key)
 
-            time.sleep(10)  # wait 10 seconds
-            
             # To avoid hitting rate limits (8 req/sec free tier), add small delay if needed
             if i < len(stock_symbols) - 1:
-                time.sleep(0.2)
+                time.sleep(9)
 
             if len(stock) < max(ema_a, ema_b) + 1:
                 print(f"Not enough data for {symbol}")
