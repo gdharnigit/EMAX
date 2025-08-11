@@ -2,7 +2,7 @@ name: Daily Stock Analysis
 
 on:
   schedule:
-    - cron: '0 14 * * 1-5'  # Run at 2 PM UTC (9 AM EST) Monday-Friday
+    - cron: '0 12 * * 1-5' 
   workflow_dispatch:  # Allows manual running
 
 jobs:
