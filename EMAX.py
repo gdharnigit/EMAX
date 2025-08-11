@@ -2,7 +2,7 @@ import os
 import requests
 import pandas as pd
 import time
-
+from datetime import datetime
 
 def get_twelvedata_data(symbol, api_key):
     """Fetch daily OHLC data for a symbol from TwelveData API."""
@@ -206,6 +206,9 @@ if __name__ == "__main__":
 
 if not filtered_with_summary.empty:
     # When saving to CSV, save the updated df
-    filtered_with_summary.to_csv("stock_analysis_results.csv", index=False)
+    date_str = datetime.now().strftime("%Y-%m-%d")
+    filename = f"stock_analysis_results_{date_str}.csv"
+    filtered_with_summary.to_csv(filename, index=False)    
+    #filtered_with_summary.to_csv("stock_analysis_results.csv", index=False)
 else:
     print("\nNo results to save.")
