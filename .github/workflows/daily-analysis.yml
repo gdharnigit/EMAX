@@ -59,8 +59,14 @@ jobs:
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
-        git add -u
+        
+        # Add only new/updated CSV files
         git add stock_analysis_results_*.csv
-        git commit -m "Update stock analysis results"
+        
+        # Commit only if there are changes
+        git diff --cached --quiet || git commit -m "Update stock analysis results"
+        
+        # Push to main branch
         git push https://${{ secrets.GITHUB_TOKEN }}@github.com/gdharnigit/EMAX.git HEAD:main
+      working-directory: /home/runner/work/EMAX/EMAX
 
