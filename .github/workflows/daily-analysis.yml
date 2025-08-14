@@ -56,6 +56,7 @@ jobs:
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
+        git add -u
         git add stock_analysis_results_*.csv
         git commit -m "Update stock analysis results"
         git push https://${{ secrets.GITHUB_TOKEN }}@github.com/gdharnigit/EMAX.git HEAD:main
