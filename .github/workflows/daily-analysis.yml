@@ -52,6 +52,9 @@ jobs:
         path: "*.csv"
         retention-days: 10
 
+    - name: Show files to be committed
+      run: git status
+
     - name: Commit and push results
       run: |
         git config --global user.name 'github-actions'
