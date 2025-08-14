@@ -33,7 +33,15 @@ jobs:
       
     - name: Run stock analysis
       run: python EMAX.py
-    
+
+    - name: Remove previous day file
+      run: |
+        PREV_DATE=$(date -d "yesterday" '+%Y-%m-%d')
+        PREV_FILE="stock_analysis_results_${PREV_DATE}.csv"
+        if [ -f "$PREV_FILE" ]; then
+          rm "$PREV_FILE"
+        fi
+   
     - name: Upload results
       uses: actions/upload-artifact@v4
       with:
