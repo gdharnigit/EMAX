@@ -1,6 +1,6 @@
 Symbol,Crossover Date,Crossover Type,Current Price,Percentage Distance (%),Avg_Volume_20,Volume_On_Crossover,Volume_Pct_of_Avg
-AAPL,2025-07-11,Bullish,233.03,12.93,54.62,39.77,72.8
+AAPL,2025-07-11,Bullish,233.1,12.96,54.62,39.77,72.8
 Bullish_Tickers,,,,AAPL,,,
 Bearish_Tickers,,,,,,,
-Delta_Bullish,,,,AAPL,,,
+Delta_Bullish,,,,,,,
 Delta_Bearish,,,,,,,
