@@ -5,9 +5,7 @@ import time
 from datetime import datetime
 
 # === CONFIGURATION ===
-#API_KEY_TWELVE = os.environ["TWELVEDATA_API_KEY"]
-API_KEY_TWELVE = "56ac5e8b15034dc998d89c70de5eb0d8"
-
+API_KEY_TWELVE = os.environ["TWELVEDATA_API_KEY"]
 
 SYMBOLS = ["AAPL", "MSFT"]  # Example list
 
