@@ -7,7 +7,7 @@ from datetime import datetime
 # === CONFIGURATION ===
 API_KEY_TWELVE = os.environ["TWELVEDATA_API_KEY"]
 
-DEBUG = 1
+DEBUG = 0
 
 if DEBUG == 1:
     SYMBOLS = ["AAPL", "MSFT","VSCO"]  # Example list
