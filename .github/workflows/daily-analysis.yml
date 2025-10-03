@@ -2,8 +2,8 @@ name: Daily Stock Analysis
 
 on:
   schedule:
-    - cron: '0 12 * * 1-5' 
-  workflow_dispatch:  # Allows manual running
+    - cron: '0 12 * * 1-5'   # Run at 12:00 UTC Monday–Friday
+  workflow_dispatch:          # Allow manual run
 
 jobs:
   analyze-stocks:
@@ -11,7 +11,7 @@ jobs:
 
     env:
       TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}    
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -25,6 +25,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    
     - name: Show current directory
       run: pwd
 
@@ -37,10 +38,10 @@ jobs:
     - name: Delete previous day file
       run: |
         YESTERDAY=$(date -d "yesterday" +%Y-%m-%d)
-        PREV_FILE="/home/runner/work/EMAX/EMAX/stock_analysis_results_${YESTERDAY}.csv"
+        PREV_FILE="stock_analysis_results_${YESTERDAY}.csv"
         if [ -f "$PREV_FILE" ]; then
           echo "Deleting previous file: $PREV_FILE"
-          rm "$PREV_FILE"
+          git rm -f "$PREV_FILE"
         else
           echo "No previous file found: $PREV_FILE"
         fi
@@ -60,13 +61,12 @@ jobs:
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
         
-        # Add only new/updated CSV files
-        git add stock_analysis_results_*.csv
+        # Stage new/updated CSV files
+        git add stock_analysis_results_*.csv || true
         
-        # Commit only if there are changes
+        # Commit only if there are changes (including deletions)
         git diff --cached --quiet || git commit -m "Update stock analysis results"
         
         # Push to main branch
         git push https://${{ secrets.GITHUB_TOKEN }}@github.com/gdharnigit/EMAX.git HEAD:main
       working-directory: /home/runner/work/EMAX/EMAX
-
