@@ -1,0 +1,18 @@
+Symbol,Crossover Date,Crossover Type,Current Price,Percentage Distance (%),Avg_Volume_20,Volume_On_Crossover,Volume_Pct_of_Avg
+ELS,2025-11-10,Bullish,61.76,0.65,2.33,1.37,58.67
+LSCC,2025-11-17,Bearish,61.73,-7.86,2.14,1.74,81.66
+UNM,2025-11-04,Bullish,75.92,0.53,1.36,3.88,286.08
+HALO,2025-11-13,Bullish,70.56,3.53,2.33,3.51,150.42
+COLB,2025-10-28,Bullish,25.75,0.41,5.6,9.0,160.93
+WU,2025-10-28,Bullish,8.9,6.18,13.46,27.85,206.85
+LEG,2025-11-04,Bearish,8.72,-5.38,1.67,1.7,101.67
+SBRA,2025-11-12,Bullish,18.59,1.23,3.01,3.98,132.19
+CRI,2025-10-14,Bullish,30.54,4.01,1.21,1.15,94.78
+ASB,2025-10-21,Bearish,24.13,-5.59,1.61,1.48,92.03
+NSA,2025-10-29,Bearish,28.78,-7.92,1.2,2.0,167.29
+DOC,2025-11-04,Bearish,17.29,-5.18,10.96,7.38,67.38
+LOW,2025-10-13,Bearish,225.0,-9.31,2.72,3.07,112.87
+Bullish_Tickers,,,,"ELS,UNM,HALO,COLB,WU,SBRA,CRI",,,
+Bearish_Tickers,,,,"LSCC,LEG,ASB,NSA,DOC,LOW",,,
+Delta_Bullish,,,,"HALO,CRI",,,
+Delta_Bearish,,,,"LSCC,LOW",,,
